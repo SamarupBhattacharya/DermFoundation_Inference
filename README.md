@@ -29,7 +29,7 @@ pip install -r requirements.txt
 ```
 And then clone the repository as follows. 
 ```bash
-git clone https://github.com/Samarup-Bhattacharya/DermFoundation_Inference.git
+git clone https://github.com/SamarupBhattacharya/DermFoundation_Inference.git
 ```
 
 ## Data processing
