@@ -32,63 +32,42 @@ And then clone the repository as follows.
 git clone https://github.com/SamarupBhattacharya/DermFoundation_Inference.git
 ```
 
-## Data processing
+## Data
 
 The folder **Data** contains numpy files containing the embeddings generated for the images with the help of Google's Derm Foundation model along with the ground truth labels for the images and CSV files containing additional information for the images as well as for the patients.
-1. signatures.csv - The details of the gene groups.
-2. org_minmax_scaler - The trained min-max scalers to normalise the transcriptomic data.
+1. dataset_2_embeddings.npy - Contains a numpy array of 6144-dimensional embeddings for all the images in the dataset (as well as certain augmentations for the images and have not been utilized for this paper)
+2. dataset_2_labels.npy - Contains a numpy array of labels for the images in the dataset (the 748 labels at the end correspond to the augmentations of the images and have not been utilized for this paper)
+3. Imagewise_Data.csv - Contains image-level information for the images in the dataset such as Image Name, Category, Clinical Diagnosis, Lesion Annotation Count.
+4. Patientwise_Data.csv - Contains patient-level information for the images in the dataset including Patient ID, Age, Gender, Smoking, Chewing_Betel_Quid, Alcohol, Image Count
 
 
 
-## Synthesizing transcriptomic data from histopathology images
-The folder **PathGen** contains the code to synthesize transcriptomic features from whole slide images using our novel diffusion-based model PathGen. The checkpoints for the trained models can be downloaded from [here](https://drive.google.com/drive/folders/1vGwPY9WA81F_tDke4mMjKHAjiPtwBdd3?usp=sharing). 
+## Saved Models
+The folder **Checkpoints** contains the saved checkpoints for each of the five folds used for cross validation and for each of the three modes explored. In order to replicate the performance claimed in our paper, these checkpoints will find use.
+Note: We used Kaggle's P100 GPU for training and evaluating the model, and therefore to replicate our performance, the reader is humbly requested to use the same.
 
-### Training
-To train PathGen execute the following.
+### Training/Testing
+To train/test DermFoundation_Inference execute the following.
 ```bash
-python3 PathGen/main.py --data_root_dir PROCESSED_DATA_PATH --results_dir RESULT_DIRECTORY_PATH --max_epochs NUMBER_OF_EPOCHS
+python main.py --checkpoint_dir CHECKPOINT_DIRECTORY_PATH --data_dir DATA_DIRECTORY_PATH --mode MODE --inference_only WHETHER_INFERENCE_ONLY_MODE_IS_DESIRED
 ```
-To resume training from an intermediate epoch execute the following.
+Here:
+
+- checkpoint_dir: Requires the path of the checkpoint directory i.e. path to the directory where the contents of the "Checkpoints" directory have been downloaded and saved
+- data_dir:  Requires the path of the checkpoint directory i.e. path to the directory where the contents of the "Data" directory have been downloaded and saved
+- mode: Three modes are supported by the training/testing code
+  - unimodal: Only the images are used to train/test the MLP Classifier
+  - multimodal_all_features: All five columns of the patient-level metadata are used for training/testing the Fusion Model Classifier in conjunction with the embeddings of the images
+  - multimodal_best_features: The two most important columns of features from the patient-level metadata(determined with the help of XGBoost) are used for training/testing the Fusion Model Classifier in conjunction with the embeddings of the images
+- inference_only: Requires one of the following as input:
+  - yes: Model is used for inference only using the checkpoints saved in "Checkpoints" directory
+  - no: Model is trained first and then inference is performed
+
+
+## Embedding Generation for the Images using Google's Derm Foundation model
+
 ```bash
-python3 PathGen/main.py --data_root_dir PROCESSED_DATA_PATH --results_dir RESULT_DIRECTORY_PATH --max_epochs NUMBER_OF_EPOCHS --weight_path PATH_OF_WEIGHT_TO_LOAD --start_epoch START_EPOCH_NUMBER
-```
 
-### Inference
-To run inference execute the following.
-```bash
-python3 PathGen/main.py --data_root_dir PROCESSED_DATA_PATH --results_dir RESULT_DIRECTORY_PATH --weight_path PATH_OF_WEIGHT_TO_LOAD --op_mode test
-```
-
-
-## Gradation and Survival Risk Estimation
-The folder **MCAT_GR** contains the code for gradation and survival risk estimation using synthesised transcriptomic data obtained using PathGen. The checkpoints for the trained models can be downloaded from [here](https://drive.google.com/drive/folders/1EQTALaJmpReP5n_86SSkUnVcuJdTtVQO?usp=sharing).
-
-### Training using real transcriptomic data
-To train the model using real transcriptomic data execute the following.
-```bash
-python3 MCAT_GR/main.py --data_root_dir PROCESSED_DATA_PATH --results_dir RESULT_DIRECTORY_PATH --max_epochs NUMBER_OF_EPOCHS --data_type real --op_mode train —n_timebin NUMBER_OF_SURVIVAL_TIME_BINS --n_grade NUMBER_OF_GRADES
-```
-
-To resume training from an intermediate epoch, execute the following.
-```bash
-python3 MCAT_GR/main.py --data_root_dir PROCESSED_DATA_PATH --results_dir RESULT_DIRECTORY_PATH --max_epochs NUMBER_OF_EPOCHS --data_type real —op_mode train --best_weight_path PATH_OF_WEIGHT_TO_LOAD --start_epoch START_EPOCH_NUMBER —n_timebin NUMBER_OF_SURVIVAL_TIME_BINS --n_grade NUMBER_OF_GRADES
-```
-
-### Inference using synthesized transcriptomic data
-To perform inference using synthesised transcriptomic data execute the following.
-```bash
-python3 MCAT_GR/main.py --data_root_dir PROCESSED_DATA_PATH --results_dir RESULT_DIRECTORY_PATH  --data_type syn --op_mode test --best_weight_path PATH_OF_BEST_WEIGHT --test_syn_path PATH_TO_SYNTHESIZED_TRANSCRIPTOMES —n_timebin NUMBER_OF_SURVIVAL_TIME_BINS --n_grade NUMBER_OF_GRADES
-```
-
-To perform distributed inference using synthesised transcriptomic data execute the following.
-```bash
-python3 MCAT_GR/main.py --data_root_dir PROCESSED_DATA_PATH --results_dir RESULT_DIRECTORY_PATH  --data_type syn --op_mode test --best_weight_path PATH_OF_BEST_WEIGHT --test_syn_path PATH_TO_SYNTHESIZED_TRANSCRIPTOMES —n_timebin NUMBER_OF_SURVIVAL_TIME_BINS --n_grade NUMBER_OF_GRADES --test_type distributed
-```
-
-### Calibration and uncertainty estimation
-Execute the following to perform calibration using synthesised transcriptomic data and uncertainty estimation using synthesised transcriptomic data.
-```bash
-python3 MCAT_GR/main.py --data_root_dir PROCESSED_DATA_PATH --results_dir RESULT_DIRECTORY_PATH  --data_type syn --op_mode calibrate --best_weight_path PATH_OF_BEST_WEIGHT --test_syn_path PATH_TO_SYNTHESIZED_TRANSCRIPTOMES —n_timebin NUMBER_OF_SURVIVAL_TIME_BINS --n_grade NUMBER_OF_GRADES
 ```
 
 
