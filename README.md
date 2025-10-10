@@ -64,11 +64,10 @@ Here:
   - no: Model is trained first and then inference is performed
 
 
-## Embedding Generation for the Images using Google's Derm Foundation model
+## Notebooks
+This directory contains the Kaggle notebooks that were used for model training and evaluation.
 
-```bash
 
-```
 
 
 # Acknowledgement 
