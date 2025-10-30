@@ -39,10 +39,12 @@ git clone https://github.com/SamarupBhattacharya/DermFoundation_Inference.git
 ## Data
 
 The folder **Data** contains numpy files containing the embeddings generated for the images with the help of Google's Derm Foundation model along with the ground truth labels for the images and CSV files containing additional information for the images as well as for the patients.
-1. dataset_2_embeddings.npy - Contains a numpy array of 6144-dimensional embeddings for all the images in the dataset (as well as certain augmentations for the images and have not been utilized for this paper)
-2. dataset_2_labels.npy - Contains a numpy array of labels for the images in the dataset (the 748 labels at the end correspond to the augmentations of the images and have not been utilized for this paper)
-3. Imagewise_Data.csv - Contains image-level information for the images in the dataset such as Image Name, Category, Clinical Diagnosis, Lesion Annotation Count.
-4. Patientwise_Data.csv - Contains patient-level information for the images in the dataset including Patient ID, Age, Gender, Smoking, Chewing_Betel_Quid, Alcohol, Image Count
+1. dataset_1_embeddings.npy - Contains a numpy array of 6144-dimensional embeddings for all the images in the dataset 1
+2. dataset_1_labels.npy - Contains a numpy array of labels for the images in the dataset 1
+3. dataset_2_embeddings.npy - Contains a numpy array of 6144-dimensional embeddings for all the images in the dataset 2(as well as certain augmentations for the images and have not been utilized for this paper)
+4. dataset_2_labels.npy - Contains a numpy array of labels for the images in the dataset 2(the 748 labels at the end correspond to the augmentations of the images and have not been utilized for this paper)
+5. Imagewise_Data.csv - Contains image-level information for the images in the dataset 2 such as Image Name, Category, Clinical Diagnosis, Lesion Annotation Count.
+6. Patientwise_Data.csv - Contains patient-level information for the images in the dataset 2 including Patient ID, Age, Gender, Smoking, Chewing_Betel_Quid, Alcohol, Image Count
 
 
 
