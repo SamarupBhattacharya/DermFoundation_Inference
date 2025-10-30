@@ -10,7 +10,7 @@ DOI -
 ## Abstract
 While there exist large public image datasets for skin cancer (more common in the global north), there only exist a couple of small public datasets for oral cancer (more common the global south), thus potentially indicating a hidden bias from the point of view of AI fairness and benchmarking machine learning models. While there has been some work using convolutional neural network (CNN) models on these smaller oral cancer datasets, it has not been possible yet to train a state-of-the-art large vision transformer (ViT) based foundation model on oral cancer yet due to data scarcity. For the first time, in this paper, it is demonstrated that a vision transformer model trained on skin lesion images (Google DermFoundation) can be used directly as backbone feature embedders without any retraining or tuning for robust feature representation on oral lesion images. 
 \
-
+![Graphical Abstract](Graphical Abstract.pdf)
 
 
 # Data
