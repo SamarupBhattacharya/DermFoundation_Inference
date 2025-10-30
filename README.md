@@ -8,7 +8,7 @@ Authors -  \
 DOI - 
 
 ## Abstract
-While there exist large public image datasets for skin cancer (more common in the global north), there only exist a couple of small public datasets for oral cancer (more common the global south), thus potentially indicating a hidden bias from the point of view of AI fairness and benchmarking machine learning models. While there has been some work using convolutional neural network (CNN) models on these smaller oral cancer datasets, it has not been possible yet to train a state-of-the-art large vision transformer (ViT) based foundation model on oral cancer yet due to data scarcity. For the first time, in this paper, it is demonstrated that a vision transformer model trained on skin lesion images (Google DermFoundation) can be used directly as backbone feature embedders without any retraining or tuning for robust feature representation on oral lesion images. 
+Recognizing the critical limitations imposed by data scarcity in Oral Squamous Cell Carcinoma (OSCC) detection, this work demonstrates how the unprecedented transferability of Vision Foundation Models (VFMs) provides a powerful solution. We present the first work to employ a VFM, Google’s Derm Foundation, pretrained on dermatology images, as a frozen feature extractor for OSCC detection. By training only a shallow Multi-Layer Perceptron (MLP) classifier, we achieve high-performance with minimal computational load. This lightweight pipeline, validated across multiple datasets, offers robust performance comparable to fully trained Convolutional Neural Networks (CNNs), establishing an efficient paradigm for early screening in resource-constrained environments.
 \
 \
 \
