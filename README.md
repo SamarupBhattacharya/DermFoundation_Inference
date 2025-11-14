@@ -4,8 +4,8 @@
 The repository contains the implementation of the following paper. \
 \
 Title - **Vision foundation models pre-trained on skin lesions can detect oral lesions too!** \
-Authors -  \
-DOI - 
+Authors -  Vedatroyee Pal, Rajarshi Bandyopadhyay, Samarup Bhattacharya, Sanjoy Kumar Saha, Tapabrata Chakrabarti
+DOI - Under peer review
 
 ## Abstract
 Recognizing the critical limitations imposed by data scarcity in Oral Squamous Cell Carcinoma (OSCC) detection, this work demonstrates how the unprecedented transferability of Vision Foundation Models (VFMs) provides a powerful solution. We present the first work to employ a VFM, Google’s Derm Foundation, pretrained on dermatology images, as a frozen feature extractor for OSCC detection. By training only a shallow Multi-Layer Perceptron (MLP) classifier, we achieve high-performance with minimal computational load. This lightweight pipeline, validated across multiple datasets, offers robust performance comparable to fully trained Convolutional Neural Networks (CNNs), establishing an efficient paradigm for early screening in resource-constrained environments.
