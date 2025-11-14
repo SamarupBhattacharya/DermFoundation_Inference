@@ -4,7 +4,7 @@
 The repository contains the implementation of the following paper. \
 \
 Title - **Vision foundation models pre-trained on skin lesions can detect oral lesions too!** \
-Authors -  Vedatroyee Pal, Rajarshi Bandyopadhyay, Samarup Bhattacharya, Sanjoy Kumar Saha, Tapabrata Chakrabarti
+Authors -  Vedatroyee Pal, Rajarshi Bandyopadhyay, Samarup Bhattacharya, Sanjoy Kumar Saha, Tapabrata Chakrabarti \
 DOI - Under peer review
 
 ## Abstract
