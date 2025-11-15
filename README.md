@@ -49,11 +49,23 @@ The folder **Data** contains numpy files containing the embeddings generated for
 
 
 ## Saved Models
-The folder **Checkpoints** contains the saved checkpoints for each of the five folds used for cross validation and for each of the three modes explored. In order to replicate the performance claimed in our paper, these checkpoints will find use.
+The folder **Checkpoints** contains the saved checkpoints for each of the five folds used for cross validation(for both datasets) and for each of the three modes explored(for the Zenodo dataset). In order to replicate the performance claimed in our paper, these checkpoints will find use. \
 Note: We used Kaggle's P100 GPU for training and evaluating the model, and therefore to replicate our performance, the reader is humbly requested to use the same.
 
 ### Training/Testing
-To train/test DermFoundation_Inference execute the following.
+To train/test DermFoundation_Inference on the first dataset(Kaggle) execute the following.
+```bash
+python main_1.py --checkpoint_dir CHECKPOINT_DIRECTORY_PATH --data_dir DATA_DIRECTORY_PATH --inference_only WHETHER_INFERENCE_ONLY_MODE_IS_DESIRED
+```
+Here:
+
+- checkpoint_dir: Requires the path of the checkpoint directory i.e. path to the directory where the contents of the "Checkpoints" directory have been downloaded and saved
+- data_dir:  Requires the path of the checkpoint directory i.e. path to the directory where the contents of the "Data" directory have been downloaded and saved
+- inference_only: Requires one of the following as input:
+  - yes: Model is used for inference only using the checkpoints saved in "Checkpoints" directory
+  - no: Model is trained first and then inference is performed
+
+To train/test DermFoundation_Inference on the second dataset(Zenodo) execute the following.
 ```bash
 python main.py --checkpoint_dir CHECKPOINT_DIRECTORY_PATH --data_dir DATA_DIRECTORY_PATH --mode MODE --inference_only WHETHER_INFERENCE_ONLY_MODE_IS_DESIRED
 ```
@@ -77,14 +89,10 @@ This directory contains the Kaggle notebooks that were used for model training a
 
 
 # Acknowledgement 
-
+Tapabrata Chakraborti is supported by the Turing-Roche Strategic Partnership and the UCL NIHR Biomedical Research Centre. The authors have no conflicts of interest.
 
 
 # Citation
-```bash
-
-```
-
 ```bash
 
 ```
