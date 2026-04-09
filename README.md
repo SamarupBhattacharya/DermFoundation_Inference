@@ -91,4 +91,4 @@ This directory contains the Kaggle notebooks that were used for model training a
 # Acknowledgement 
 Tapabrata Chakraborti is supported by the Turing-Roche Strategic Partnership and the UCL NIHR Biomedical Research Centre. The authors have no conflicts of interest.
 
-Let's connect! [LinkedIn][https://www.linkedin.com/in/samarup-bhattacharya-9b31ba275/]
+Let's connect! [LinkedIn](https://www.linkedin.com/in/samarup-bhattacharya-9b31ba275/)
